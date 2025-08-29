@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, NotFoundException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -15,7 +25,9 @@ export class ProductsController {
   @Get()
   findAll() {
     // return this.productsService.findAll();
-    throw new NotFoundException()
+
+    // In built Error + custom message as argument !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    throw new UnauthorizedException('Not authorized');
   }
 
   @Get(':id')
